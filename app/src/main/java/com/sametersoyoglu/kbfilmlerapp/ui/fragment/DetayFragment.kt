@@ -9,8 +9,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.navArgs
 import com.sametersoyoglu.kbfilmlerapp.R
 import com.sametersoyoglu.kbfilmlerapp.databinding.FragmentDetayBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class DetayFragment : Fragment() {
 
     private lateinit var binding: FragmentDetayBinding

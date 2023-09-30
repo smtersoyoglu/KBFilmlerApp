@@ -13,8 +13,9 @@ import com.sametersoyoglu.kbfilmlerapp.data.entity.Filmler
 import com.sametersoyoglu.kbfilmlerapp.databinding.FragmentAnasayfaBinding
 import com.sametersoyoglu.kbfilmlerapp.ui.adapter.FilmlerAdapter
 import com.sametersoyoglu.kbfilmlerapp.ui.viewmodel.AnasayfaViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class AnasayfaFragment : Fragment() {
 
     private lateinit var binding: FragmentAnasayfaBinding
