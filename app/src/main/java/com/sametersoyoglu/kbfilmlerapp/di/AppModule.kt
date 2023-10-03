@@ -29,12 +29,14 @@ class AppModule {
         return FilmlerRepository(filmlerDataSource)
     }
 
-    @Provides
-    @Singleton
+    @Provides // @ApplicationContext context: Context bunu kullanmamızın sebebi bize Context gerekiyor bunu dışarıdan ver dedik.(içeride oluşturamıyoruz)
+    @Singleton // bunu normalde dışarıdan sağlamamız gerekiyor fakat @ApplicationContext bu notasyon sayesinde hilt kütüphanesi bize bunu kendisi vericek.
     fun provideFilmlerDao(@ApplicationContext context:Context) : FilmlerDao {
-        val veriTabani = Room.databaseBuilder(context,Veritabani::class.java,"filmler_app.sqlite")
-            .createFromAsset("filmler_app.sqlite").build()
-        return veriTabani.getFilmlerDao()
+        // veri tabanı ile ilgili çalışma yapmamız gerek onu tetiklemek çalıştırmak ve kopyalama işlemleri için
+        val veriTabani = Room.databaseBuilder(context,Veritabani::class.java,"filmler_app.sqlite")  // ilk satırda veritabanına erişme işlemini ,
+            .createFromAsset("filmler_app.sqlite").build() // .createFromAsset("rehber.sqlite").build() bölümündede kopyalama işlemini yaptık. uygulama ilk çalıştığında 1 kere kopyalama yapıcak daha sonra erişmeye başlıcak
+        return veriTabani.getFilmlerDao() // bu fonksiyon sayesinde KisilerDao'u KisilerDataSource'a orda tanımladığımız kisilerDao 'a ileticez.
     }
+
 
 }
