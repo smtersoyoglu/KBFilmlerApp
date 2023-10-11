@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.sametersoyoglu.kbfilmlerapp.R
 import com.sametersoyoglu.kbfilmlerapp.databinding.FragmentDetayBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,8 +39,11 @@ class DetayFragment : Fragment() {
         // toolbar'a film nesnesinden ad ı cekerek her resimde o resmin adını toolbarda gösterme
         //binding.toolbarDetay.title = film.ad  - DataBinding ile xml de filmNesnesi oluşturarak bu bilgiyi çekiyoruz.
 
-        // resmi cekme
-        binding.imageViewFilm.setImageResource(resources.getIdentifier(film.resim,"drawable",requireContext().packageName))
+        // resmi cekme bu kodu Glide ile internetten resim çekme koduna çeviricez retrofit için
+        //binding.imageViewFilm.setImageResource(resources.getIdentifier(film.resim,"drawable",requireContext().packageName))
+        val url = "http://kasimadalan.pe.hu/filmler_yeni/resimler/${film.resim}"
+        Glide.with(this).load(url).override(500,750).into(binding.imageViewFilm)
+
 
         // her resmin kendine özgü fiyatını cekme detay sayfasında
         //binding.textViewFiyat.text = "${film.fiyat} ₺"  - DataBinding ile xml de filmNesnesi oluşturarak bu bilgiyi çekiyoruz.

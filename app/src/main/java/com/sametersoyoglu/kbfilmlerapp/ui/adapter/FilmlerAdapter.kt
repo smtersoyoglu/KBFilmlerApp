@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.sametersoyoglu.kbfilmlerapp.R
 import com.sametersoyoglu.kbfilmlerapp.data.entity.Filmler
@@ -28,7 +29,11 @@ class FilmlerAdapter(var mContext: Context, var filmlerListesi : List<Filmler>) 
         val film = filmlerListesi.get(position) // listenin içerisindeki filmleri sırasıyla almaya yarar.
         val t = holder.tasarim
 
-        t.imageViewCVFilm.setImageResource(mContext.resources.getIdentifier(film.resim,"drawable",mContext.packageName))
+        // alttaki resim tanımlama kodunu internetten resim çekmek için Glide kullanıcaz Glide kodunu yazıcaz aşşağıda.
+        //t.imageViewCVFilm.setImageResource(mContext.resources.getIdentifier(film.resim,"drawable",mContext.packageName))
+        val url = "http://kasimadalan.pe.hu/filmler_yeni/resimler/${film.resim}"
+        Glide.with(mContext).load(url).override(500,750).into(t.imageViewCVFilm)
+
 
         //t.textViewCVFiyat.text = "${film.fiyat} ₺" DataBinding ile xml filmNesnesi oluşturup orda tanımladık
         t.filmNesnesi = film
