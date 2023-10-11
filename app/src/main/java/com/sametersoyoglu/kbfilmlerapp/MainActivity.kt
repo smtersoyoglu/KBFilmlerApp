@@ -11,5 +11,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+        // Kotlin-Bootcamp Filmler Uygulaması Retrofit-Glide kodları bölümü
     }
 }
